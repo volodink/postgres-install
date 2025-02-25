@@ -14,3 +14,13 @@ sudo apt install -y pgadmin4-desktop
 sudo apt install -y pgadmin4-web 
 sudo /usr/pgadmin4/bin/setup-web.sh
 
+# Define the paths to the configuration files
+POSTGRESQL_CONF="/path/to/postgresql.conf"
+PG_HBA_CONF="/path/to/pg_hba.conf"
+
+sed -i 's/^#listen_addresses =.*/listen_addresses = '\''*'\''/' "$POSTGRESQL_CONF"
+
+echo "host    all             all             0.0.0.0/0               md5" >> "$PG_HBA_CONF"
+
+sudo systemctl restart postgresql
+sudo service postgresql restart
