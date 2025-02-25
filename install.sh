@@ -3,7 +3,7 @@
 sudo apt-get update
 sudo apt-get dist-upgrade -y
 
-sudo apt-get install -y postgresql postgresql-contrib
+sudo apt-get install -y postgresql-13 postgresql-contrib
 sudo systemctl start postgresql.service
 # sudo systemctl status postgresql.service
 
@@ -15,8 +15,8 @@ sudo apt install -y pgadmin4-web
 sudo /usr/pgadmin4/bin/setup-web.sh
 
 # Define the paths to the configuration files
-POSTGRESQL_CONF="/path/to/postgresql.conf"
-PG_HBA_CONF="/path/to/pg_hba.conf"
+POSTGRESQL_CONF="/etc/postgresql/13/main/postgresql.conf"
+PG_HBA_CONF="/etc/postgresql/13/main/pg_hba.conf"
 
 sed -i 's/^#listen_addresses =.*/listen_addresses = '\''*'\''/' "$POSTGRESQL_CONF"
 
